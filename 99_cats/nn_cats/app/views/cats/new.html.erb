@@ -1,0 +1,5 @@
+<h2> Add a new cat! </h2>
+
+<% @cat = Cat.new %>
+
+<%= render 'form', action: :new, cat: @cat %>
