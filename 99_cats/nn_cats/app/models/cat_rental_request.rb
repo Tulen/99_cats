@@ -13,5 +13,8 @@ class CatRentalRequest < ApplicationRecord
     foreign_key: :cat_id,
     class_name: :Cat
 
-  
+  def overlapping_requests
+    # CatRentalRequest.all
+    CatRentalRequest.where(cat_id: self.cat_id).where.not(id: self.id)
+  end
 end
