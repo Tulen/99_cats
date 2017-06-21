@@ -12,6 +12,12 @@ class Cat < ApplicationRecord
 
   validates :sex, inclusion: { in: SEX, message: "This is not a valid color" }
 
+  has_many :cat_rental_requests,
+    dependent: :destroy,
+    primary_key: :id,
+    foreign_key: :cat_id,
+    class_name: :CatRentalRequest
+
   def age
     days = (Date.today - self.birth_date)
     days.to_i / 365
